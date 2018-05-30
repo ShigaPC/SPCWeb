@@ -22,9 +22,11 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
                 node {
                   excerpt(pruneLength: 5000)
                   frontmatter {
-                    slug,
-                    title,
-                    tags,
+                    slug
+                    title
+                    date(formatString: "YYYY/MM/DD")
+                    author
+                    tags
                     category
                   }
                 }

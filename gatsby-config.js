@@ -2,7 +2,7 @@ module.exports = {
   siteMetadata: {
     title: '滋賀大学パソコン研究会 ウェブサイト',
     author: '滋賀大学パソコン研究会',
-    description: '滋賀大学パソコン研究会の活動報告をしています',
+    description: '滋賀大学パソコン研究会の活動報告をしています。',
     siteUrl: 'https://www.shigapc.com/',
   },
   plugins: [

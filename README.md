@@ -6,4 +6,4 @@
 
 ## 連絡先
 
-ソースコードに関するご質問はTwitter@naokihspcまで。
+ソースコードに関するご質問はTwitter@NaokiHiramatsuまで。
