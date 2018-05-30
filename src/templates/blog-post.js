@@ -20,13 +20,16 @@ class BlogPostTemplate extends React.Component {
       <div>
         <article>
           <Helmet title={`${post.frontmatter.title} | ${siteTitle}`} />
-          <time dateTime={post.frontmatter.date} title={post.frontmatter.date}>
+          <h1>{post.frontmatter.title}</h1>
+            <time dateTime={post.frontmatter.date} title={post.frontmatter.date} style={{
+              marginBottom: "1em",
+              display: "block",
+            }}>
             <FaClockO height="1em" width="1.5em"/>
             <small>
               {post.frontmatter.date}
             </small>
           </time>
-          <h1>{post.frontmatter.title}</h1>
           <div dangerouslySetInnerHTML={{ __html: post.html }} />
           <aside>
             <ul style={{
@@ -68,7 +71,7 @@ class BlogPostTemplate extends React.Component {
           </aside>
         </article>
         <section>
-          <h1>関連記事</h1>
+          <strong>関連記事</strong>
           {relatedPages.map(({ node }) => {
             const excerptSliced = node.excerpt.length > 110 ? node.excerpt.slice(0, 110) + "..." : node.excerpt;
             return (
@@ -79,11 +82,11 @@ class BlogPostTemplate extends React.Component {
                     {node.frontmatter.date}
                   </small>
                 </time>
-                <h2>
+                <div>
                   <Link to={node.frontmatter.slug}>
                     {node.frontmatter.title}
                   </Link>
-                </h2>
+                </div>
                 <p dangerouslySetInnerHTML={{ __html: excerptSliced }} />
               </div>
             );

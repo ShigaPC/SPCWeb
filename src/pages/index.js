@@ -17,7 +17,7 @@ class BlogIndex extends React.Component {
     const posts = get(this, 'props.data.allMarkdownRemark.edges')
 
     return (
-      <section>
+      <div>
         <Helmet
           title={siteTitle}
           meta={[
@@ -27,29 +27,70 @@ class BlogIndex extends React.Component {
             },
           ]}
         />
-        <h1>新着記事</h1>
+        <section className="content">
+        <div className="title-1">News & Tech</div>
+        <div className="sub-title-1">ＰＣ研の活動報告や、部員が書いた技術記事を読もう</div>
+        <div className="preview-container">
         {posts.map(({ node }, index) => {
-          if(index > 4) return;
+          if(index > 4 || !(node.frontmatter.category.toUpperCase() === "NEWS" || node.frontmatter.category.toUpperCase() === "TECH")) return;
           const title = get(node, 'frontmatter.title') || node.frontmatter.slug;
           const excerpt = node.excerpt.length > 110 ? node.excerpt.slice(0, 110) + "..." : node.excerpt;
           return (
-            <div key={node.frontmatter.slug}>
-              <time dateTime={node.frontmatter.date} title={node.frontmatter.date}>
+            <div className="preview" key={node.frontmatter.slug}>
+              <div className="category">{node.frontmatter.category.toUpperCase()}</div>
+              <time dateTime={node.frontmatter.date} title={node.frontmatter.date} style={{
+                display: "block",
+              }}>
                 <FaClockO height="1em" width="1.5em"/>
                 <small>
                   {node.frontmatter.date}
                 </small>
               </time>
-              <h2>
+              <div className="title-2">
                 <Link to={node.frontmatter.slug}>
                   {title}
                 </Link>
-              </h2>
+              </div>
               <p dangerouslySetInnerHTML={{ __html: excerpt }} />
             </div>
           )
         })}
-      </section>
+        </div>
+        </section>
+        <hr style={{
+          width: '73px',
+          margin: '0 auto',
+          background: '#ffb3b3',
+        }}/>
+        <section className="content">
+        <div className="title-1">Projects</div>
+        <div className="sub-title-1">部員の作品を観よう</div>
+        {posts.map(({ node }, index) => {
+          if(index > 4 || node.frontmatter.category.toUpperCase() !== "PROJECTS") return;
+          const title = get(node, 'frontmatter.title') || node.frontmatter.slug;
+          const excerpt = node.excerpt.length > 110 ? node.excerpt.slice(0, 110) + "..." : node.excerpt;
+          return (
+            <div className="preview" key={node.frontmatter.slug}>
+              <div className="category">{node.frontmatter.category.toUpperCase()}</div>
+              <time dateTime={node.frontmatter.date} title={node.frontmatter.date} style={{
+                display: "block",
+              }}>
+                <FaClockO height="1em" width="1.5em"/>
+                <small>
+                  {node.frontmatter.date}
+                </small>
+              </time>
+              <div className="title-2">
+                <Link to={node.frontmatter.slug}>
+                  {title}
+                </Link>
+              </div>
+              <p dangerouslySetInnerHTML={{ __html: excerpt }} />
+            </div>
+          )
+        })}
+        </section>
+      </div>
     )
   }
 }
