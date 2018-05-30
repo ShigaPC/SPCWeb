@@ -1,10 +1,9 @@
-# gatsby-starter-hello-world
-Starter with the bare essentials needed for a [Gatsby](https://www.gatsbyjs.org/) site
+# 滋賀大学パソコン研究会 ウェブサイト
 
-Install this starter (assuming Gatsby is installed) by running from your CLI:
-```
-gatsby new gatsby-site https://github.com/gatsbyjs/gatsby-starter-hello-world
-```
+## 開発環境
 
-## Running in development
-`gatsby develop`
+静的サイトジェネレータ"GatsbyJS"を用いて生成されています。
+
+## 連絡先
+
+ソースコードに関するご質問はTwitter@naokihspcまで。

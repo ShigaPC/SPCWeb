@@ -1,6 +1,6 @@
 {
-  "name": "gatsby-starter-hello-world",
-  "description": "Gatsby hello world starter",
+  "name": "shigapc-website",
+  "description": "Shiga-univ PC Group Website",
   "license": "MIT",
   "scripts": {
     "develop": "gatsby develop",
