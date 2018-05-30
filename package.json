@@ -22,6 +22,8 @@
     "gatsby-source-filesystem": "^1.5.36",
     "gatsby-transformer-remark": "^1.7.41",
     "gatsby-transformer-sharp": "^1.6.24",
+    "prismjs": "^1.14.0",
+    "react-helmet": "^5.2.0",
     "react-icons": "^2.2.7",
     "typography": "^0.16.17",
     "typography-theme-github": "^0.15.10"

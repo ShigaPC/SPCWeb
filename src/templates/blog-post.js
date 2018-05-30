@@ -20,10 +20,10 @@ class BlogPostTemplate extends React.Component {
       <div>
         <article>
           <Helmet title={`${post.frontmatter.title} | ${siteTitle}`} />
-          <time dateTime={node.frontmatter.date} title={node.frontmatter.date}>
+          <time dateTime={post.frontmatter.date} title={post.frontmatter.date}>
             <FaClockO height="1em" width="1.5em"/>
             <small>
-              {node.frontmatter.date}
+              {post.frontmatter.date}
             </small>
           </time>
           <h1>{post.frontmatter.title}</h1>
@@ -32,8 +32,8 @@ class BlogPostTemplate extends React.Component {
             <ul style={{
                 display: 'flex',
                 flexFlow: 'row wrap',
-                listStyle: none,
-                padding: 0
+                listStyle: 'none',
+                padding: '0',
             }}>
               {post.frontmatter.tags.map(tag =>
                 <li style={{ padding: '0 0.5em' }}>
@@ -47,7 +47,7 @@ class BlogPostTemplate extends React.Component {
                 flexWrap: 'wrap',
                 justifyContent: 'space-between',
                 listStyle: 'none',
-                padding: 0,
+                padding: '0',
               }}
             >
               <li style={{maxWidth: '44%'}}>
