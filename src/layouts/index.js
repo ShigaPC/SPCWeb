@@ -8,7 +8,7 @@ import '../styles/style.css'
 class Template extends React.Component {
   render() {
     const { location, children } = this.props
-    let header
+    let header, footer
 
     let rootPath = `/`
     if (typeof __PREFIX_PATHS__ !== `undefined` && __PREFIX_PATHS__) {
@@ -17,13 +17,17 @@ class Template extends React.Component {
 
     if (location.pathname === rootPath) {
       header = (
-        <div style={{ height: '500px' }}>
+        <header style={{
+          height: '400px',
+          position: 'relative',
+          overflow: 'hidden',
+        }}>
           <div style={{
             position: 'absolute',
             fontSize: '28px',
             color: '#FFF',
             width: '100%',
-            height: '280px',
+            height: '350px',
             display: 'flex',
             flexFlow: 'row wrap',
             justifyContent: 'center',
@@ -36,7 +40,7 @@ class Template extends React.Component {
             <div style={{margin: '0 0.3em'}}>彦根から</div><div style={{margin: '0 0.3em'}}>最前線へ</div>
           </div>
           <div className="bg-1" style={{
-            height: '560px',
+            height: '400px',
             width: '100%',
             position: 'absolute',
           }}>
@@ -63,11 +67,11 @@ class Template extends React.Component {
           </div>
           <div style={{
             position: 'absolute',
-            fontSize: '50px',
+            fontSize: '36px',
             width: '5em',
             height: '5em',
             left: 'calc(50% - 2.5em)',
-            top: '410px',
+            top: '393px',
             transform: 'translate(0,-50%)',
             fontWeight: "bolder",
             fontFamily: "Noto Sans Japanese",
@@ -135,11 +139,11 @@ class Template extends React.Component {
               }}><span style={{position: 'absolute', bottom: '0'}}>研</span></span>
             </div>
           </div>
-        </div>
+        </header>
       )
     } else {
       header = (
-        <div>
+        <header>
           <div style={{position: 'relative', top: '2.8em'}}>
             <Link to={'/'} style={{
               position: 'absolute',
@@ -215,9 +219,18 @@ class Template extends React.Component {
               </div>
             </Link>
           </div>
-        </div>
+        </header>
       )
     }
+    footer = (
+      <footer style={{
+        textAlign: 'center',
+        fontSize: '0.8em',
+        padding: '1em 0'
+      }}>
+        © 2018 Shiga Univ PC Club
+      </footer>
+    )
     return (
       <div>
         <Helmet
@@ -239,6 +252,7 @@ class Template extends React.Component {
         >
           {children()}
         </div>
+        {footer}
       </div>
     )
   }

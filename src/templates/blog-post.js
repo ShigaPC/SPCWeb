@@ -36,7 +36,8 @@ class BlogPostTemplate extends React.Component {
                 display: 'flex',
                 flexFlow: 'row wrap',
                 listStyle: 'none',
-                padding: '0',
+                paddingLeft: '0',
+                marginLeft: '0'
             }}>
               {post.frontmatter.tags.map(tag =>
                 <li style={{ padding: '0 0.5em' }}>
@@ -50,7 +51,8 @@ class BlogPostTemplate extends React.Component {
                 flexWrap: 'wrap',
                 justifyContent: 'space-between',
                 listStyle: 'none',
-                padding: '0',
+                paddingLeft: '0',
+                marginLeft: '0'
               }}
             >
               <li style={{maxWidth: '44%'}}>
