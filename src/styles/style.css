@@ -36,11 +36,13 @@
 .title-3 {
   width: 100vw;
   text-align: center;
-  font-size: 5em;
+  font-size: 32px;
   font-weight: bold;
-  line-height: 2.1em;
+  line-height: 170px;
   color: #fff;
   padding: 70px 0;
+  position: relative;
+  white-space: nowrap;
 }
 
 .title-3:before {
