@@ -1,0 +1,20 @@
+backend:
+  name: github
+  repo: ShigaPC/SPCWeb
+
+media_folder: static/assets
+public_folder: assets
+
+collections:
+  - name: posts
+    label: Posts
+    folder: posts
+    create: true
+    fields:
+      - { name: path, label: Path }
+      - { name: date, label: Date, widget: date }
+      - { name: title, label: Title }
+      - { name: category, label: Category }
+      - { name: tags, label: Tags, widget: list }
+      - { name: author, label: Author }
+      - { name: body, label: Body, widget: markdown }
