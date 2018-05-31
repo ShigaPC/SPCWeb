@@ -18,7 +18,7 @@ class Template extends React.Component {
     if (location.pathname === rootPath) {
       header = (
         <header style={{
-          height: '400px',
+          height: '420px',
           position: 'relative',
           overflow: 'hidden',
         }}>
@@ -143,18 +143,20 @@ class Template extends React.Component {
       )
     } else {
       header = (
-        <header>
-          <div style={{position: 'relative', top: '2.8em'}}>
+        <header style={{
+          height: '100px',
+          background: '#544'
+        }}>
             <Link to={'/'} style={{
               position: 'absolute',
               display: 'block',
               margin: '0 auto',
               width: '5em',
               height: '5em',
+              top: '7px',
               left: 'calc(50%)',
-              top: 'calc(50%)',
-              transform: 'translate(-50%,-50%)',
-              color: '#ff8080',
+              transform: 'translate(-50%,0)',
+              color: '#fff',
               fontWeight: "bolder",
               fontFamily: "Noto Sans Japanese",
             }}>
@@ -218,7 +220,6 @@ class Template extends React.Component {
                 }}><span style={{position: 'absolute', bottom: '0'}}>研</span></span>
               </div>
             </Link>
-          </div>
         </header>
       )
     }
@@ -242,16 +243,9 @@ class Template extends React.Component {
           ]}
         />
         {header}
-        <div
-          style={{
-            marginLeft: 'auto',
-            marginRight: 'auto',
-            maxWidth: '928px',
-            padding: '24px',
-          }}
-        >
+        <main>
           {children()}
-        </div>
+        </main>
         {footer}
       </div>
     )

@@ -18,7 +18,8 @@ class BlogPostTemplate extends React.Component {
 
     return (
       <div>
-        <article>
+        <div className="title-3">{post.frontmatter.category.toUpperCase()}</div>
+        <article className="center">
           <Helmet title={`${post.frontmatter.title} | ${siteTitle}`} />
           <h1>{post.frontmatter.title}</h1>
             <time dateTime={post.frontmatter.date} title={post.frontmatter.date} style={{
@@ -31,13 +32,18 @@ class BlogPostTemplate extends React.Component {
             </small>
           </time>
           <div dangerouslySetInnerHTML={{ __html: post.html }} />
-          <aside>
+          <aside style={{ marginTop: '2.3em', padding: '0 0.6em' }}>
+            <p style={{
+              color: '#994d4d',
+              fontSize: '0.85em',
+            }}>この記事を書いた人：{post.frontmatter.author}</p>
             <ul style={{
                 display: 'flex',
                 flexFlow: 'row wrap',
                 listStyle: 'none',
                 paddingLeft: '0',
-                marginLeft: '0'
+                marginLeft: '0',
+                fontSize: '0.85em',
             }}>
               {post.frontmatter.tags.map(tag =>
                 <li style={{ padding: '0 0.5em' }}>
@@ -52,7 +58,8 @@ class BlogPostTemplate extends React.Component {
                 justifyContent: 'space-between',
                 listStyle: 'none',
                 paddingLeft: '0',
-                marginLeft: '0'
+                marginLeft: '0',
+                fontSize: '0.85em',
               }}
             >
               <li style={{maxWidth: '44%'}}>
@@ -72,12 +79,15 @@ class BlogPostTemplate extends React.Component {
             </ul>
           </aside>
         </article>
-        <section>
-          <strong>関連記事</strong>
+        <hr className="hr-1"/>
+        <section className="center">
+          <div className="title-1">Related Posts</div>
+          <div className="sub-title-1">この記事に類似しているページ</div>
           {relatedPages.map(({ node }) => {
             const excerptSliced = node.excerpt.length > 110 ? node.excerpt.slice(0, 110) + "..." : node.excerpt;
             return (
-              <div>
+              <div className="preview">
+                <div className="category">{node.frontmatter.category.toUpperCase()}</div>
                 <time dateTime={node.frontmatter.date} title={node.frontmatter.date}>
                   <FaClockO height="1em" width="1.5em"/>
                   <small>
@@ -85,9 +95,9 @@ class BlogPostTemplate extends React.Component {
                   </small>
                 </time>
                 <div>
-                  <Link to={node.frontmatter.slug}>
-                    {node.frontmatter.title}
-                  </Link>
+                <Link className="title-2" to={node.frontmatter.slug}>
+                  {node.frontmatter.title}
+                </Link>
                 </div>
                 <p dangerouslySetInnerHTML={{ __html: excerptSliced }} />
               </div>

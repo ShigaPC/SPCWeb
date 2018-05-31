@@ -17,7 +17,7 @@ class BlogIndex extends React.Component {
     const posts = get(this, 'props.data.allMarkdownRemark.edges')
 
     return (
-      <div>
+      <div className="center">
         <Helmet
           title={siteTitle}
           meta={[
@@ -46,22 +46,16 @@ class BlogIndex extends React.Component {
                   {node.frontmatter.date}
                 </small>
               </time>
-              <div className="title-2">
-                <Link to={node.frontmatter.slug}>
-                  {title}
-                </Link>
-              </div>
+              <Link className="title-2" to={node.frontmatter.slug}>
+                {title}
+              </Link>
               <p dangerouslySetInnerHTML={{ __html: excerpt }} />
             </div>
           )
         })}
         </div>
         </section>
-        <hr style={{
-          width: '73px',
-          margin: '0 auto',
-          background: '#ffb3b3',
-        }}/>
+        <hr className="hr-1"/>
         <section className="content">
         <div className="title-1">Projects</div>
         <div className="sub-title-1">部員の作品を観よう</div>
@@ -80,11 +74,9 @@ class BlogIndex extends React.Component {
                   {node.frontmatter.date}
                 </small>
               </time>
-              <div className="title-2">
-                <Link to={node.frontmatter.slug}>
-                  {title}
-                </Link>
-              </div>
+              <Link className="title-2" to={node.frontmatter.slug}>
+                {title}
+              </Link>
               <p dangerouslySetInnerHTML={{ __html: excerpt }} />
             </div>
           )

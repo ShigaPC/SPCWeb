@@ -13,6 +13,8 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
 
   return new Promise((resolve, reject) => {
     const blogPost = path.resolve('./src/templates/blog-post.js')
+    const tagTemplate = path.resolve("src/templates/tags.js");
+
     resolve(
       graphql(
         `
@@ -41,12 +43,17 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
         }
 
         const posts = result.data.allMarkdownRemark.edges;
+        let tags = [];
 
         _.each(posts, (post, index) => {
           const previous = index === posts.length - 1 ? null : posts[index + 1].node;
           const next = index === 0 ? null : posts[index - 1].node;
 
           var relatedPages = [];
+          
+          if (_.get(post, "node.frontmatter.tags")) {
+            tags = tags.concat(post.node.frontmatter.tags);
+          }
 
           // 関連ページリストの生成
           _.each(posts, (tmp, index) => {
@@ -73,6 +80,26 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
               relatedPages
             },
           })
+
+        tags = _.uniq(tags);
+
+        createPage({
+          path: '/tags',
+          component: tagTemplate,
+          context: {
+            tag: null
+          }
+        });
+
+        tags.forEach(tag => {
+          createPage({
+            path: `/tags/${tag}/`,
+            component: tagTemplate,
+            context: {
+              tag,
+            },
+          });
+        });
         })
       })
     )
