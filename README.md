@@ -1,6 +1,6 @@
 # Shiga University Computer Club's  Website
 
-This is the rep for the [Shiga Univ Computer Club's website]("https://www.shigapc.com").
+This is the rep for the [Shiga Univ Computer Club's website](https://www.shigapc.com).
 
 ## Would you like to join us?
 
