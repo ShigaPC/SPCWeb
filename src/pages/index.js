@@ -159,7 +159,7 @@ class BlogIndex extends React.Component {
         </section>
         <div className="title-4">ARTICLES</div>
         <section className="content center">
-        <div className="title-1">NEWS & TECH</div>
+        <div className="title-1">News & Tech</div>
         <div className="sub-title-1">ＰＣ研の活動報告や、部員が書いた技術記事を読もう</div>
         <div className="preview-container">
         {mappedNewsTechPosts}
