@@ -13,7 +13,9 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
 
   return new Promise((resolve, reject) => {
     const blogPost = path.resolve('./src/templates/blog-post.js')
-    const tagTemplate = path.resolve("src/templates/tags.js");
+    const tagTemplate = path.resolve("src/templates/tags.js")
+    const categoryTemplate = path.resolve("src/templates/category.js")
+    const postsTemplate = path.resolve("src/templates/posts.js")
 
     resolve(
       graphql(
@@ -44,6 +46,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
 
         const posts = result.data.allMarkdownRemark.edges;
         let tags = [];
+        let categories = [];
 
         _.each(posts, (post, index) => {
           const previous = index === posts.length - 1 ? null : posts[index + 1].node;
@@ -54,8 +57,11 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
           if (_.get(post, "node.frontmatter.tags")) {
             tags = tags.concat(post.node.frontmatter.tags);
           }
+          
+          if (_.get(post, "node.frontmatter.category")) {
+            categories.push(post.node.frontmatter.category);
+          }
 
-          // 関連ページリストの生成
           _.each(posts, (tmp, index) => {
             _.each(post.node.frontmatter.tags, (elm)=>{
               if(
@@ -69,9 +75,8 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
             if(relatedPages.length > 5) return false;
           })
 
-          // 個別ページの生成
           createPage({
-            path: post.node.frontmatter.slug,
+            path: '/' + post.node.frontmatter.category + '/' + post.node.frontmatter.slug,
             component: blogPost,
             context: {
               slug: post.node.frontmatter.slug,
@@ -82,13 +87,20 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
           })
 
         tags = _.uniq(tags);
+        categories = _.uniq(categories);
 
         createPage({
-          path: '/tags',
+          path: '/tags/',
           component: tagTemplate,
           context: {
-            tag: null
+            tag: null,
+            tags
           }
+        });
+
+        createPage({
+          path: '/posts/',
+          component: postsTemplate,
         });
 
         tags.forEach(tag => {
@@ -97,6 +109,17 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
             component: tagTemplate,
             context: {
               tag,
+              tags: null
+            },
+          });
+        });
+
+        categories.forEach(cat => {
+          createPage({
+            path: `/${cat}/`,
+            component: categoryTemplate,
+            context: {
+              cat,
             },
           });
         });

@@ -1,29 +1,72 @@
-.bg-1 {
-  position: absolute;
-  background: url("./images/hikone-sakura.jpg") center center / cover no-repeat fixed;
-  z-index: -1;
+html, body, #___gatsby {
+  height: 100%;
 }
 
-.bg-1:before {
+.bg-1 {
+  position: fixed;
+  height: 450px;
+  background: url("./images/hikone-sakura.jpg") center center / cover no-repeat fixed;
+  z-index: -10;
+}
+
+.bg-2 {
+  position: relative;
+  background: linear-gradient(#745a5a, #8d5c5c);
+  height: 27em;
+  color: #fff;
+  overflow: hidden;
+}
+
+.bg-2:before {
   content: '';
   position: absolute;
-  top: 350px;
+  top: -3em;
   width: 120%;
-  height: 500px;
+  height: 6em;
+  background: #FFF;
+  left: 40%;
+  -webkit-transform-origin: left top;
+  -ms-transform-origin: left top;
+  transform-origin: left top;
+  -webkit-transform: rotate(-2deg) translate(-50%, 0);
+  -ms-transform: rotate(-2deg) translate(-50%, 0);
+  transform: rotate(-2deg) translate(-50%, 0);
+}
+
+.bg-2:after {
+  content: '';
+  position: absolute;
+  top: 25em;
+  width: 120%;
+  height: 6em;
   background: #FFF;
   left: 60%;
   -webkit-transform-origin: left top;
   -ms-transform-origin: left top;
   transform-origin: left top;
-  -webkit-transform: rotate(5deg) translate(-50%, 0);
-  -ms-transform: rotate(5deg) translate(-50%, 0);
-  transform: rotate(5deg) translate(-50%, 0);
+  -webkit-transform: rotate(1deg) translate(-50%, 0);
+  -ms-transform: rotate(1deg) translate(-50%, 0);
+  transform: rotate(1deg) translate(-50%, 0);
+}
+
+.bg-2 a {
+  color: white;
+  text-decoration: underline;
+}
+
+.bg-2 a:hover {
+  color: rgba(255,255,255,0.6);
+}
+
+.bg-3 {
+  background: #331a1a;
+  color: #fff;
+  padding: 1.5em 0;
 }
 
 .title-1 {
   font-size: 1.4em;
   font-weight: bold;
-  color: #000;
   letter-spacing: 0.1em;
   line-height: 2.3em;
 }
@@ -33,48 +76,88 @@
   line-height: 2.1em;
 }
 
-.title-3 {
-  width: 100vw;
-  text-align: center;
-  font-size: 32px;
-  font-weight: bold;
-  line-height: 172px;
+.header a {
+  font-family: 'Oswald';
   color: #fff;
-  padding: 70px 0;
-  position: relative;
-  white-space: nowrap;
+  font-size: 1em;
+  letter-spacing: 0.05em;
 }
 
-.title-3:before {
-  content: '';
-  position: absolute;
-  width: 120vw;
-  height: 200px;
-  background: #ffcccc;
-  z-index: -1;
-  left: 60vw;
-  -webkit-transform-origin: left top;
-  -ms-transform-origin: left top;
-  transform-origin: left top;
-  -webkit-transform: rotate(3deg) translate(-50%, 0);
-  -ms-transform: rotate(3deg) translate(-50%, 0);
-  transform: rotate(3deg) translate(-50%, 0);
+.header a:hover {
+  color: rgba(255,255,255,0.7);
+  text-decoration: none;
 }
 
-.title-3:after {
+.bg-4 {
+  position: absolute;
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+  top: -140px;
+}
+
+.bg-4:before {
   content: '';
   position: absolute;
-  width: 120vw;
-  height: 200px;
-  background: #fee;
-  z-index: -2;
-  left: 40vw;
+  width: 120%;
+  height: 152px;
+  background: #ffeaea;
+  left: 40%;
   -webkit-transform-origin: left top;
   -ms-transform-origin: left top;
   transform-origin: left top;
   -webkit-transform: rotate(-3deg) translate(-50%, 0);
   -ms-transform: rotate(-3deg) translate(-50%, 0);
   transform: rotate(-3deg) translate(-50%, 0);
+}
+
+.bg-4:after {
+  content: '';
+  position: absolute;
+  width: 120%;
+  height: 150px;
+  background: #ffb3b3;
+  left: 60%;
+  -webkit-transform-origin: left top;
+  -ms-transform-origin: left top;
+  transform-origin: left top;
+  -webkit-transform: rotate(4deg) translate(-50%, 0);
+  -ms-transform: rotate(4deg) translate(-50%, 0);
+  transform: rotate(4deg) translate(-50%, 0);
+}
+
+.title-3 {
+  font-family: 'Oswald';
+  text-align: center;
+  width: 100%;
+  font-size: 22px;
+  font-weight: bold;
+  color: #ff8080;
+  letter-spacing: 0.15em;
+  padding: 2em 0 0.5em;
+}
+
+.title-4 {
+  font-family: 'Oswald';
+  font-size: 1.5em;
+  letter-spacing: 0.15em;
+  line-height: 2.5em;
+  text-align: center;
+}
+
+.title-5 {
+  color: #994d4d;
+  font-size: 1.1em;
+  letter-spacing: 0.1em;
+  line-height: 2em;
+}
+
+.title-6 {
+  text-align: center;
+  color: #ff8080;
+  font-size: 1.1em;
+  letter-spacing: 0.1em;
+  line-height: 2.7em;
 }
 
 .sub-title-1 {
@@ -87,6 +170,12 @@
   width: 73px;
   margin: 2.8em auto;
   background: #ffb3b3;
+}
+
+.hr-2 {
+  width: 73px;
+  background: #fff;
+  margin: 2.8em auto 0;
 }
 
 .center {
@@ -102,10 +191,18 @@
   padding: 1em 0;
 }
 
+.important-preview-container {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  padding: 1em 0;
+}
+
 .preview {
-  flex: 1 0 210px;
+  flex: 1 0 200px;
   position: relative;
-  margin: 1em 1em;
+  margin: 1em 1.2em;
 }
 
 .category {
@@ -125,4 +222,30 @@
   color: #FFF;
   letter-spacing: 0.1em;
   border-radius: 3px;
+}
+
+.category:hover {
+  text-decoration: none;
+  background: rgba(255,128,128,0.6);
+}
+
+.category-link {
+  text-decoration: none;
+  color: rgb(255,128,128);
+}
+
+.category-link:hover {
+  text-decoration: none;
+  color: rgba(255,128,128,0.6);
+}
+
+.footer a {
+  font-family: 'Oswald';
+  letter-spacing: 0.05em;
+  color: #fff;
+}
+
+.footer a:hover {
+  text-decoration: none;
+  color: #ff8080;
 }

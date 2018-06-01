@@ -8,17 +8,13 @@ const _ = require('lodash')
 
 class Tags extends React.Component {
   render() {
-    const { tag } = this.props.pathContext;
+    const { tag, tags } = this.props.pathContext;
     const siteTitle = get(this.props, 'data.site.siteMetadata.title')
     if(tag) {
       const { edges, totalCount } = get(this.props, 'data.allMarkdownRemark')
-      let multiByte = "";
-      totalCount.toString().split('').forEach(function (tmp) {
-          multiByte += String.fromCharCode(tmp.charCodeAt(0) + 0xFEE0);
-      });
-      const tagHeader = `${tag}（全${multiByte}件）`;
+      const tagHeader = `ALL #${tag}(${totalCount})`;
       return (
-        <section className="center">
+        <div>
           <Helmet
             title={`${tag} | ${siteTitle}`}
             meta={[
@@ -28,16 +24,16 @@ class Tags extends React.Component {
               },
             ]}
           />
-          <div className="title-1">{tagHeader}</div>
-          <div className="sub-title-1">{`#${tag} が付けられた記事を一覧表示しています`}</div>
-          <div className="preview-container">
+          <div className="title-3">{tagHeader}</div>
+          <section className="center">
+            <div className="preview-container">
             {edges.map(({ node }, index) => {
               const title = get(node, 'frontmatter.title') || node.frontmatter.slug;
               const excerpt = node.excerpt.length > 140 ? node.excerpt.slice(0, 140) + "..." : node.excerpt;
               return (
                 <div className='preview' key={node.frontmatter.slug}>
-                  <div className="category">{node.frontmatter.category.toUpperCase()}</div>
-                  <time dateTime={node.frontmatter.date} title={node.frontmatter.date} style={{
+                  <Link to={"/" + node.frontmatter.category} className="category">{node.frontmatter.category.toUpperCase()}</Link>
+                  <time dateTime={node.frontmatter.date} style={{
                     display: "block",
                   }}>
                     <FaClockO height="1em" width="1.5em"/>
@@ -45,21 +41,35 @@ class Tags extends React.Component {
                       {node.frontmatter.date}
                     </small>
                   </time>
-                  <Link className="title-2" to={node.frontmatter.slug}>
+                  <Link className="title-2" to={'/' + node.frontmatter.category + '/' + node.frontmatter.slug}>
                     {title}
                   </Link>
                   <p dangerouslySetInnerHTML={{ __html: excerpt }} />
                 </div>
               )
             })}
-          </div>
-          <Link to="/tags">すべてのタグ</Link>
-        </section>
+            </div>
+            <div style={{display: 'block', textAlign: 'right'}}><Link to="/tags">すべてのタグ</Link></div>
+          </section>
+        </div>
       );
     } else {
       return (
         <section className="center">
           <Helmet title={`すべてのタグ | ${siteTitle}`} />
+          <div className="title-3">すべてのタグ({tags.length})</div>
+          <div style={{
+            display: 'flex',
+            flexFlow: 'row wrap',
+          }}>
+            {tags.map((tag, index) => {
+              return (
+                <div style={{margin: '0.5em' }}>
+                  <Link to={"/tags/" + tag}>#{tag}</Link>
+                </div>
+              )
+            })}
+          </div>
         </section>
       );
     }
@@ -69,6 +79,7 @@ class Tags extends React.Component {
 Tags.propTypes = {
   pathContext: PropTypes.shape({
     tag: PropTypes.string.isRequired,
+    tags: PropTypes.string.isRequired,
   }),
   data: PropTypes.shape({
     site: PropTypes.shape({
