@@ -20,7 +20,7 @@ You can contact us in many different ways!
 * 下書き機能を準備中です
 * ページネーション機能（記事が多くなると一覧表示が長くなってしまうのを防ぐ）を準備中です
 * Slugは`test-post`のように、**スラッシュを付けずに**ケバブケース（ハイフン繋ぎ）で記述してください。`.html`は付けなくても大丈夫です。日本語も使えますが、Twitterに張り付けたりするとurlがパーセントエンコードされるかもしれません
-* 投稿後のＵＲＬは、`www.shigapc.com/category-name/post-name`となります
+* 投稿後のＵＲＬは、`www.shigapc.com/category-name/slug`となります
 * urlが偶然重複してしまうことも考えられます。バグったらスラッグを変えてみてください
 * Categoryに`tech`か`news`か`projects`を**小文字で**設定すると、自動的にトップページで紹介されます
 * Categoryに`notices`を設定すると、トップページに目立つように表示されます。イベントの告知などに使ってください
