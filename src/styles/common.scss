@@ -70,7 +70,7 @@ html, body, #___gatsby, .page-wrapper {
     justify-content: space-around;
     font-size: 11px;
     letter-spacing: 0.3em;
-    color: #e56666;
+    color: #b55c5c;
     height: 300px;
   }
 
@@ -409,7 +409,7 @@ html, body, #___gatsby, .page-wrapper {
 
   .category-link {
     text-decoration: none;
-    color: rgb(255,128,128);
+    color: #b55c5c;
   }
 
   .post {
@@ -567,7 +567,7 @@ html, body, #___gatsby, .page-wrapper {
   width: 100%;
   font-size: 22px;
   font-weight: bold;
-  color: #ff8080;
+  color: #b55c5c;
   letter-spacing: 0.15em;
   padding: 2em 0 0.5em;
 }
@@ -648,7 +648,7 @@ html, body, #___gatsby, .page-wrapper {
     transform: rotate(90deg);
     font-size: 0.85em;
     font-weight: bold;
-    background: #e56666;
+    background: #b55c5c;
     color: #FFF;
     letter-spacing: 0.1em;
     border-radius: 3px;
@@ -656,7 +656,7 @@ html, body, #___gatsby, .page-wrapper {
 
   .category:hover {
     text-decoration: none;
-    background: rgba(255,128,128,0.6);
+    background: rgba(181,92,92,0.6);
   }
   .clockIcon {
     height: 1em;
@@ -678,5 +678,5 @@ html, body, #___gatsby, .page-wrapper {
 
 .category-link:hover {
   text-decoration: none;
-  color: rgba(255,128,128,0.6);
+  color: rgba(181,92,92,0.6);
 }
