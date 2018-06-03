@@ -4,8 +4,10 @@ import FaStarO from 'react-icons/lib/fa/star-o'
 import Helmet from 'react-helmet'
 import TwitterIcon from 'react-icons/lib/fa/twitter-square'
 import GitHubIcon from 'react-icons/lib/fa/github-square'
+import HikoneSakura from '../assets/hikone-sakura.jpg'
 
-import '../styles/style.css'
+import '../styles/typebase.css'
+import '../styles/common.scss'
 
 class Template extends React.Component {
   render() {
@@ -19,247 +21,68 @@ class Template extends React.Component {
 
     if (location.pathname === rootPath) {
       header = (
-        <header style={{
-          height: '512px',
-          position: 'relative',
-          overflow: 'hidden',
-        }}>
-          <div style={{
-            position: 'absolute',
-            fontSize: '28px',
-            color: '#FFF',
-            width: '100%',
-            height: '400px',
-            display: 'flex',
-            flexFlow: 'row wrap',
-            justifyContent: 'center',
-            alignItems: 'center',
-            alignContent: 'center',
-            letterSpacing: '0.2em',
-            fontFamily: "Noto Sans Japanese",
-            fontWeight: "bold"
-          }}>
-            <div style={{margin: '0 0.3em'}}>彦根から</div><div style={{margin: '0 0.3em'}}>最前線へ</div>
+        <header className="header">
+          <div className="catch-phrase-wrapper">
+            <div>彦根から</div><div>最前線へ</div>
           </div>
           <div className="bg-1" style={{
-            width: '100%',
-          }}>
-          </div>
-          <div style={{
-            position: 'absolute',
-            top: '407px',
-            background: '#FFF',
-            transformOrigin: 'left top',
-            transform: 'rotate(5deg) translate(-60%, 0)',
-            width: '120%',
-            left: '60%',
-            display: 'flex',
-            flexFlow: 'row wrap',
-            justifyContent: 'space-around',
-            fontSize: '11px',
-            letterSpacing: '0.3em',
-            color: '#ff8080',
-            height: '300px',
-          }}>
+            background: `url("${HikoneSakura}") center center / cover no-repeat fixed`
+          }}></div>
+          <div className="bg-1-slash">
             <span>Shiga University</span>
             <span>Computer Club</span>
           </div>
-          <div style={{
-            position: 'absolute',
-            fontSize: '36px',
-            width: '5em',
-            height: '5em',
-            left: 'calc(50% - 2.5em)',
-            top: '450px',
-            transform: 'translate(0,-50%)',
-            fontWeight: "bolder",
-            fontFamily: "Noto Sans Japanese",
-          }}>
-            <div style={{
-              position: 'absolute',
-              left: 'calc(50% - 0.5em)',
-              top: 'calc(50% - 4em)',
-              transform: 'translate(-50%,-50%)',
-              color: '#FFF',
-            }}>
-              <span style={{
-                position: 'absolute',
-                transform: 'rotate(-37deg)',
-                transformOrigin: 'bottom center',
-                height: '3em'
-              }}>滋</span>
-              <span style={{
-                position: 'absolute',
-                transform: 'rotate(0deg)',
-                transformOrigin: 'bottom center',
-                height: '3em'
-              }}>賀</span>
-              <span style={{
-                position: 'absolute',
-                transform: 'rotate(37deg)',
-                transformOrigin: 'bottom center',
-                height: '3em'
-              }}>大</span>
+          <div className="logo">
+            <div className="logo-top">
+              <span className="logo-top-a">滋</span>
+              <span className="logo-top-b">賀</span>
+              <span className="logo-top-c">大</span>
             </div>
-            <FaStarO width='2em' height='2em' style={{
-              position: 'absolute',
-              top: 'calc(50% - 1.5em)',
-              left: '50%',
-              transform: 'translate(-50%,-50%)',
-              color: '#ffb3b3'
-            }}/>
-            <div style={{
-              position: 'absolute',
-              left: 'calc(50% - 0.5em)',
-              top: 'calc(50% - 2em)',
-              transform: 'translate(-50%,-50%)',
-              color: '#000',
-            }}>
-              <span style={{
-                position: 'absolute',
-                transform: 'rotate(37deg)',
-                transformOrigin: 'top center',
-                height: '3em',
-                width: '1em',
-              }}><span style={{position: 'absolute', bottom: '0'}}>Ｐ</span></span>
-              <span style={{
-                position: 'absolute',
-                transform: 'rotate(0deg)',
-                transformOrigin: 'top center',
-                height: '3em',
-                width: '1em',
-              }}><span style={{position: 'absolute', bottom: '0'}}>Ｃ</span></span>
-              <span style={{
-                position: 'absolute',
-                transform: 'rotate(-37deg)',
-                transformOrigin: 'top center',
-                height: '3em',
-                width: '1em',
-              }}><span style={{position: 'absolute', bottom: '0'}}>研</span></span>
+            <FaStarO className="logo-mid"/>
+            <div className="logo-bottom">
+              <span className="logo-bottom-a"><span className="logo-bottom-letter">Ｐ</span></span>
+              <span className="logo-bottom-b"><span className="logo-bottom-letter">Ｃ</span></span>
+              <span className="logo-bottom-c"><span className="logo-bottom-letter">研</span></span>
             </div>
           </div>
         </header>
       )
       footer = (
-        <footer className="footer" style={{
-          background: '#331a1a',
-          color: '#fff',
-          textAlign: 'center',
-          padding: '1em 0 3em',
-          position: 'relative',
-          zIndex: '1',
-        }}>
-          <div style={{
-            display: 'inline-flex',
-            flexFlow: 'column nowrap',
-            justifyContent: 'center',
-            margin: '1em 0',
-          }}>
+        <footer className="footer">
+          <nav className="footer-nav">
             <Link to="/">HOME</Link>
             <Link to="/posts">POSTS</Link>
             <Link to="/admin/">SIGN IN</Link>
-          </div>
-          <div className="center" style={{
-            padding: '0 0 0.3em',
-            display: 'flex',
-            flexFlow: 'row wrap',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}>
-            <a target="_blank" style={{margin: '0 0.5em'}} href="https://twitter.com/densan_public">
+          </nav>
+          <div className="center footer-sns">
+            <a target="_blank" href="https://twitter.com/densan_public">
               <TwitterIcon width="3em" height="3em"/>
             </a>
-            <a target="_blank" style={{margin: '0 0.5em'}} href="https://github.com/ShigaPC/">
+            <a target="_blank" href="https://github.com/ShigaPC/">
               <GitHubIcon width="3em" height="3em"/>
             </a>
           </div>
-          <div style={{
-            fontSize: '0.9em',
-          }}>
+          <div className="footer-copyright">
             © 2018 Shiga Univ PC Club
           </div>
         </footer>
       )
     } else {
       header = (
-        <header className="header" style={{
-          height: '100px',
-          background: 'linear-gradient(#745a5a, #8d5c5c)',
-          position: 'relative',
-          zIndex: 10,
-          display: 'flex',
-          flexFlow: 'row nowrap',
-          alignItems: 'center',
-          justifyContent: 'space-around'
-        }}>
+        <header className="header">
             <Link to={'/#about'}>About</Link>
             <Link to={'/#contact'}>Contact us</Link>
-            <Link to={'/'} style={{
-              display: 'block',
-              width: '5em',
-              height: '5em',
-              color: '#fff',
-              fontWeight: "bolder",
-              fontFamily: "Noto Sans Japanese",
-            }}>
-              <div style={{
-                position: 'absolute',
-                left: 'calc(50% - 0.5em)',
-                top: 'calc(50% - 2.5em)',
-                transform: 'translate(-50%,-50%)'
-              }}>
-                <span style={{
-                  position: 'absolute',
-                  transform: 'rotate(-37deg)',
-                  transformOrigin: 'bottom center',
-                  height: '3em'
-                }}>滋</span>
-                <span style={{
-                  position: 'absolute',
-                  transform: 'rotate(0deg)',
-                  transformOrigin: 'bottom center',
-                  height: '3em'
-                }}>賀</span>
-                <span style={{
-                  position: 'absolute',
-                  transform: 'rotate(37deg)',
-                  transformOrigin: 'bottom center',
-                  height: '3em'
-                }}>大</span>
+            <Link className="logo" to={'/'}>
+              <div className="logo-top">
+                <span className="logo-top-a">滋</span>
+                <span className="logo-top-b">賀</span>
+                <span className="logo-top-c">大</span>
               </div>
-              <FaStarO width='2em' height='2em' style={{
-                position: 'absolute',
-                top: '50%',
-                left: '50%',
-                transform: 'translate(-50%,-50%)'
-              }}/>
-              <div style={{
-                position: 'absolute',
-                left: 'calc(50% - 0.5em)',
-                top: 'calc(50% - 0.5em)',
-                transform: 'translate(-50%,-50%)'
-              }}>
-                <span style={{
-                  position: 'absolute',
-                  transform: 'rotate(37deg)',
-                  transformOrigin: 'top center',
-                  height: '3em',
-                  width: '1em',
-                }}><span style={{position: 'absolute', bottom: '0'}}>Ｐ</span></span>
-                <span style={{
-                  position: 'absolute',
-                  transform: 'rotate(0deg)',
-                  transformOrigin: 'top center',
-                  height: '3em',
-                  width: '1em',
-                }}><span style={{position: 'absolute', bottom: '0'}}>Ｃ</span></span>
-                <span style={{
-                  position: 'absolute',
-                  transform: 'rotate(-37deg)',
-                  transformOrigin: 'top center',
-                  height: '3em',
-                  width: '1em',
-                }}><span style={{position: 'absolute', bottom: '0'}}>研</span></span>
+              <FaStarO className="logo-mid"/>
+              <div className="logo-bottom">
+                <span className="logo-bottom-a"><span className="logo-bottom-letter">Ｐ</span></span>
+                <span className="logo-bottom-b"><span className="logo-bottom-letter">Ｃ</span></span>
+                <span className="logo-bottom-c"><span className="logo-bottom-letter">研</span></span>
               </div>
             </Link>
             <Link to={'/posts'}>Posts</Link>
@@ -267,73 +90,46 @@ class Template extends React.Component {
         </header>
       )
       footer = (
-        <footer className="footer" style={{
-          background: '#331a1a',
-          color: '#fff',
-          textAlign: 'center',
-          padding: '1em 0 3em',
-          position: 'relative',
-          zIndex: '1',
-        }}>
-          <div style={{
-            display: 'inline-flex',
-            flexFlow: 'column nowrap',
-            justifyContent: 'center',
-            margin: '1em 0',
-          }}>
+        <footer className="footer">
+          <div className="footer-nav">
             <Link to="/">HOME</Link>
             <Link to="/posts">POSTS</Link>
             <Link to="/admin/">SIGN IN</Link>
           </div>
-          <div className="center" style={{
-            padding: '0 0 0.3em',
-            display: 'flex',
-            flexFlow: 'row wrap',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}>
-            <a target="_blank" style={{margin: '0 0.5em'}} href="https://twitter.com/densan_public">
+          <div className="center footer-sns">
+            <a target="_blank" href="https://twitter.com/densan_public">
               <TwitterIcon width="3em" height="3em"/>
             </a>
-            <a target="_blank" style={{margin: '0 0.5em'}} href="https://github.com/ShigaPC/">
+            <a target="_blank" href="https://github.com/ShigaPC/">
               <GitHubIcon width="3em" height="3em"/>
             </a>
           </div>
-          <div style={{
-            fontSize: '0.9em',
-          }}>
+          <div className="footer-copyright">
             © 2018 Shiga Univ PC Club
           </div>
         </footer>
       )
     }
     return (
-      <div style={{height: '100%'}}>
+      <div className={"page-wrapper " + (location.pathname === rootPath ? "home" : "pages")}>
         <Helmet
           link={[
-            {
-              href: 'https://fonts.googleapis.com/earlyaccess/notosansjapanese.css',
-              rel: 'stylesheet',
-            },
             {
               href: 'https://fonts.googleapis.com/css?family=Oswald',
               rel: 'stylesheet',
             },
           ]}
         />
-        <div style={{
-          minHeight: '100%',
-          marginBottom: '-250px',
-        }}>
+        <div className="main-wrapper">
           {header}
-          <main style={{background: '#fff', position: 'relative'}}>
+          <main className="main">
             { location.pathname !== rootPath && <div className="bg-4"></div> }
-            <div style={{position: 'relative', zIndex: '1'}}>
-            {children()}
+            <div className="content-wrapper">
+              {children()}
             </div>
           </main>
-          <div style={{ height: "250px" }}></div>
-          { location.pathname !== rootPath && <div style={{height: '55px'}}></div> }
+          <div className="push"></div>
+          { location.pathname !== rootPath && <div className="bottom-space"></div> }
         </div>
         {footer}
       </div>

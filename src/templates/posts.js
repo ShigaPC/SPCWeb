@@ -1,9 +1,9 @@
-import React from "react";
-import PropTypes from "prop-types";
-import Link from "gatsby-link";
+import React from "react"
+import PropTypes from "prop-types"
+import Link from "gatsby-link"
 import Helmet from "react-helmet"
 import get from 'lodash/get'
-import FaClockO from 'react-icons/lib/fa/clock-o'
+import Preview from '../components/preview'
 const _ = require('lodash')
 
 class Posts extends React.Component {
@@ -23,29 +23,7 @@ class Posts extends React.Component {
         />
         <div className="title-3">ALL POSTS({totalCount})</div>
         <section className="center">
-          <div className="preview-container">
-          {edges.map(({ node }, index) => {
-            const title = get(node, 'frontmatter.title') || node.frontmatter.slug;
-            const excerpt = node.excerpt.length > 140 ? node.excerpt.slice(0, 140) + "..." : node.excerpt;
-            return (
-              <div className='preview' key={node.frontmatter.slug}>
-                <Link to={"/" + node.frontmatter.category} className="category">{node.frontmatter.category.toUpperCase()}</Link>
-                <time dateTime={node.frontmatter.date} style={{
-                  display: "block",
-                }}>
-                  <FaClockO height="1em" width="1.5em"/>
-                  <small>
-                    {node.frontmatter.date}
-                  </small>
-                </time>
-                <Link className="title-2" to={'/' + node.frontmatter.category + '/' + node.frontmatter.slug}>
-                  {title}
-                </Link>
-                <p dangerouslySetInnerHTML={{ __html: excerpt }} />
-              </div>
-            )
-          })}
-          </div>
+          {Preview(edges)}
         </section>
       </div>
     );

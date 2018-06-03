@@ -1,3 +1,12 @@
+const {
+  NODE_ENV,
+  URL: NETLIFY_SITE_URL = 'https://www.shigapc.com',
+  DEPLOY_PRIME_URL: NETLIFY_DEPLOY_URL = NETLIFY_SITE_URL,
+  CONTEXT: NETLIFY_ENV = NODE_ENV
+} = process.env;
+const isNetlifyProduction = NETLIFY_ENV === 'production';
+const siteUrl = isNetlifyProduction ? NETLIFY_SITE_URL : NETLIFY_DEPLOY_URL;
+
 module.exports = {
   siteMetadata: {
     title: '滋賀大学パソコン研究会 ウェブサイト',
@@ -36,8 +45,6 @@ module.exports = {
         ],
       },
     },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-feed`,
       options: {
@@ -91,14 +98,34 @@ module.exports = {
         ],
       },
     },
+    {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: isNetlifyProduction
+        ? { policy: [{ userAgent: '*' }] }
+        : {
+            policy: [{ userAgent: '*', disallow: ['/'] }],
+            sitemap: null,
+            host: null
+          }
+    },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: "滋賀大学パソコン研究会ウェブサイト",
+        short_name: "滋賀大ＰＣ研",
+        start_url: "/",
+        background_color: "#ffffff",
+        theme_color: "#e56666",
+        display: "browser",
+        icon: "src/assets/icon.png",
+      },
+    },
     `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-netlify-cms`,
-    {
-      resolve: 'gatsby-plugin-typography',
-      options: {
-        pathToConfigModule: 'src/utils/typography',
-      },
-    },
+    `gatsby-plugin-sharp`,
+    `gatsby-plugin-sass`,
+    `gatsby-plugin-twitter`,
+    `gatsby-transformer-sharp`,
   ],
 }

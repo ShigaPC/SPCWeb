@@ -1,17 +1,11 @@
-/*
- * トップページを定義しています。
- * とりあえず、全部のページを新しいものから５件取得していますが、
- * カテゴリとかタグで分けることもできます。
- */
-
 import React from 'react'
 import Link from 'gatsby-link'
 import get from 'lodash/get'
 import Helmet from 'react-helmet'
-import FaClockO from 'react-icons/lib/fa/clock-o'
 import FaDown from 'react-icons/lib/fa/angle-down'
-import KaigakuSai from './images/kaigakusai.jpg'
-import VSCode from './images/vscode.png'
+import KaigakuSai from '../assets/kaigakusai.jpg'
+import VSCode from '../assets/vscode.png'
+import Preview from '../components/preview'
 const _ = require('lodash')
 
 class BlogIndex extends React.Component {
@@ -19,82 +13,6 @@ class BlogIndex extends React.Component {
     const siteTitle = get(this, 'props.data.site.siteMetadata.title')
     const description = get(this, 'props.data.site.siteMetadata.description')
     const posts = get(this, 'props.data.allMarkdownRemark.edges')
-    let numOfImportantPosts = 0;
-    let numOfNewsTechPosts = 0;
-    let numOfProjectsPosts = 0;
-    let mappedImportantPosts = [];
-    let mappedNewsTechPosts = [];
-    let mappedProjectsPosts = [];
-
-    _.each(posts,({node}, index) => {
-      if(numOfImportantPosts > 3) return false;
-      if(node.frontmatter.category !== "notices") return true;
-      numOfImportantPosts += 1;
-      const title = node.frontmatter.title || node.frontmatter.slug;
-      mappedImportantPosts.push(
-        <div className="important-preview" key={node.frontmatter.slug}>
-          <Link to={"/" + node.frontmatter.category} className="category">{node.frontmatter.category.toUpperCase()}</Link>
-          <Link to={'/' + node.frontmatter.category + '/' + node.frontmatter.slug}>
-            {title}
-          </Link>
-          &nbsp;-&nbsp;
-          <time dateTime={node.frontmatter.date} style={{
-            display: "inline",
-          }}>
-              {node.frontmatter.date}
-          </time>
-        </div>
-      )
-    })
-    _.each(posts,({node}, index) => {
-      if(numOfNewsTechPosts > 5) return false;
-      if(!(node.frontmatter.category === "news" || node.frontmatter.category === "tech")) return true;
-      numOfNewsTechPosts += 1;
-      const title = node.frontmatter.title || node.frontmatter.slug;
-      const excerpt = node.excerpt.length > 110 ? node.excerpt.slice(0, 110) + "..." : node.excerpt;
-      mappedNewsTechPosts.push(
-        <div className="preview" key={node.frontmatter.slug}>
-          <Link to={"/" + node.frontmatter.category} className="category">{node.frontmatter.category.toUpperCase()}</Link>
-          <time dateTime={node.frontmatter.date} style={{
-            display: "block",
-          }}>
-            <FaClockO height="1em" width="1.5em"/>
-            <small>
-              {node.frontmatter.date}
-            </small>
-          </time>
-          <Link className="title-2" to={'/' + node.frontmatter.category + '/' + node.frontmatter.slug}>
-            {title}
-          </Link>
-          <p dangerouslySetInnerHTML={{ __html: excerpt }} />
-        </div>
-      )
-    })
-    _.each(posts,({node}, index) => {
-      if(numOfProjectsPosts > 5) return false;
-      if(node.frontmatter.category !== "projects") return true;
-      numOfProjectsPosts += 1
-      const title = node.frontmatter.title || node.frontmatter.slug;
-      const excerpt = node.excerpt.length > 110 ? node.excerpt.slice(0, 110) + "..." : node.excerpt;
-      mappedProjectsPosts.push(
-        <div className="preview" key={node.frontmatter.slug}>
-          <Link to={"/" + node.frontmatter.category} className="category">{node.frontmatter.category.toUpperCase()}</Link>
-          <time dateTime={node.frontmatter.date} style={{
-            display: "block",
-          }}>
-            <FaClockO height="1em" width="1.5em"/>
-            <small>
-              {node.frontmatter.date}
-            </small>
-          </time>
-          <Link className="title-2" to={'/' + node.frontmatter.category + '/' + node.frontmatter.slug}>
-            {title}
-          </Link>
-          <p dangerouslySetInnerHTML={{ __html: excerpt }} />
-        </div>
-      )
-    })
-
 
     return (
       <div>
@@ -109,12 +27,7 @@ class BlogIndex extends React.Component {
         />
         <section id="about" className="content center">
           <div className="title-4">ABOUT</div>
-          <div style={{
-            display: 'flex',
-            flexFlow: 'row wrap',
-            justifyContent: 'space-around',
-            margin: '1em 0 3em'
-          }}>
+          <div className="about-content-1">
             <img src={VSCode} alt="VSCODE"/>
             <div>
               <div className="title-5">フリーダムな部風</div>
@@ -125,13 +38,7 @@ class BlogIndex extends React.Component {
               </p>
             </div>
           </div>
-          <div style={{
-            display: 'flex',
-            flexFlow: 'row wrap',
-            flexDirection: 'row-reverse',
-            justifyContent: 'space-around',
-            margin: '3em 0 0'
-          }}>
+          <div className="about-content-2">
             <img src={KaigakuSai} alt="開学祭"/>
             <div>
               <div className="title-5">年に二回の展示</div>
@@ -143,33 +50,21 @@ class BlogIndex extends React.Component {
             </div>
           </div>
         </section>
-        <section className="content bg-2" style={{
-          display: 'flex',
-          flexFlow: 'column nowrap',
-          justifyContent: 'center',
-          alignItems: 'center',
-          margin: '2em 0'
-        }}>
+        <section className="content bg-2 notices-container">
         <div className="title-4">NOTICES</div>
-        <div className="important-preview-container">
-        {mappedImportantPosts}
-        <FaDown width='1.5em' height="1.5em"/>
-        <Link to="notices">More Notices</Link>
+        {Preview(posts, "lines", 4, ["notices"])}
+        <FaDown className="downIcon"/>
+        <div className="more-notices">
+          <Link to="notices">More Notices</Link>
         </div>
         </section>
         <div className="title-4">ARTICLES</div>
         <section className="content center">
         <div className="title-1">News & Tech</div>
         <div className="sub-title-1">ＰＣ研の活動報告や、部員が書いた技術記事を読もう</div>
-        <div className="preview-container">
-        {mappedNewsTechPosts}
-        </div>
-        <FaDown width='1.5em' height="1.5em" style={{display:"block", margin: '0 auto'}}/>
-        <div style={{
-          display: 'flex',
-          flexFlow: 'row wrap',
-          justifyContent: 'center',
-        }}>
+        {Preview(posts, "default", 6, ["news", "tech"])}
+        <FaDown className="downIcon"/>
+        <div className="more-news-tech">
           <Link to="news">More News</Link>&nbsp;/&nbsp;
           <Link to="tech">More Tech</Link>
         </div>
@@ -178,27 +73,21 @@ class BlogIndex extends React.Component {
         <section className="content center">
         <div className="title-1">Projects</div>
         <div className="sub-title-1">部員の作品を観よう</div>
-        <div className="preview-container">
-        {mappedProjectsPosts}
-        </div>
-        <FaDown width='1.5em' height="1.5em" style={{display:"block", margin: '0 auto'}}/>
-        <div style={{
-          display: 'flex',
-          flexFlow: 'row wrap',
-          justifyContent: 'center',
-        }}>
+        {Preview(posts, "default", 6, ["projects"])}
+        <FaDown className="downIcon"/>
+        <div className="more-projects">
           <Link to="projects">More Projects</Link>
         </div>
         </section>
-        <section className="bg-3" style={{marginTop: '3em'}}>
+        <section className="bg-3 contact-container">
         <div id="contact" className="title-4">CONTACT US</div>
         <div className="title-6">ACCESS</div>
-        <p style={{textAlign: 'center'}}>
+        <p>
           部室棟２Ｆ（Ｂ－６）<br/>
           休み時間には誰かしらいます
         </p>
         <div className="title-6">JOIN US!</div>
-        <p style={{textAlign: 'center'}}>
+        <p>
           ＰＣ研は融通が利くサークルです<br/>
           経験問わず、誰でも歓迎しています<br/>
         </p>

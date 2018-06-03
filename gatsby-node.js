@@ -1,9 +1,3 @@
-/*
- * 個別ページの生成を行っています。
- * 関連ページのリストもここで生成しています。
- * excerptはマルチバイト文字列をうまく取得できないのでpruneLength:5000で全部取得しています。
- */
-
 const _ = require('lodash')
 const Promise = require('bluebird')
 const path = require('path')
@@ -12,10 +6,10 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
   const { createPage } = boundActionCreators
 
   return new Promise((resolve, reject) => {
-    const blogPost = path.resolve('./src/templates/blog-post.js')
-    const tagTemplate = path.resolve("src/templates/tags.js")
-    const categoryTemplate = path.resolve("src/templates/category.js")
+    const postTemplate = path.resolve('./src/templates/post.js')
     const postsTemplate = path.resolve("src/templates/posts.js")
+    const tagTemplate = path.resolve("src/templates/tag.js")
+    const categoryTemplate = path.resolve("src/templates/category.js")
 
     resolve(
       graphql(
@@ -77,7 +71,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
 
           createPage({
             path: '/' + post.node.frontmatter.category + '/' + post.node.frontmatter.slug,
-            component: blogPost,
+            component: postTemplate,
             context: {
               slug: post.node.frontmatter.slug,
               previous,
@@ -90,17 +84,17 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
         categories = _.uniq(categories);
 
         createPage({
+          path: '/posts/',
+          component: postsTemplate,
+        });
+
+        createPage({
           path: '/tags/',
           component: tagTemplate,
           context: {
             tag: null,
-            tags
-          }
-        });
-
-        createPage({
-          path: '/posts/',
-          component: postsTemplate,
+            tags,
+          },
         });
 
         tags.forEach(tag => {
@@ -109,7 +103,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
             component: tagTemplate,
             context: {
               tag,
-              tags: null
+              tags: null,
             },
           });
         });
