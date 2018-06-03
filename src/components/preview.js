@@ -1,6 +1,7 @@
 import React from "react"
 import Link from 'gatsby-link'
 import FaClockO from 'react-icons/lib/fa/clock-o'
+const _ = require('lodash')
 
 function Preview(posts, type = "default", max = -1, category = []) {
   let numOfPosts = 0;
