@@ -28,7 +28,7 @@ class BlogIndex extends React.Component {
         <section id="about" className="content center">
           <div className="title-4">ABOUT</div>
           <div className="about-content-1">
-            <img src={VSCode} alt="VSCODE"/>
+            <img width="250" height="125" src={VSCode} alt="VSCODE"/>
             <div>
               <div className="title-5">フリーダムな部風</div>
               <p>
@@ -39,7 +39,7 @@ class BlogIndex extends React.Component {
             </div>
           </div>
           <div className="about-content-2">
-            <img src={KaigakuSai} alt="開学祭"/>
+            <img width="250" height="125" src={KaigakuSai} alt="開学祭"/>
             <div>
               <div className="title-5">年に二回の展示</div>
               <p>
