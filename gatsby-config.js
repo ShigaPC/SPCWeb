@@ -116,7 +116,7 @@ module.exports = {
         start_url: "/",
         background_color: "#ffffff",
         theme_color: "#e56666",
-        display: "browser",
+        display: "minimal-ui",
         icon: "src/assets/icon.png",
       },
     },
