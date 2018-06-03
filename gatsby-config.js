@@ -115,7 +115,7 @@ module.exports = {
         short_name: "滋賀大ＰＣ研",
         start_url: "/",
         background_color: "#ffffff",
-        theme_color: "#e56666",
+        theme_color: "#b55c5c",
         display: "minimal-ui",
         icon: "src/assets/icon.png",
       },
