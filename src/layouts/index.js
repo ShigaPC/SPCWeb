@@ -119,7 +119,9 @@ class Template extends React.Component {
               rel: 'stylesheet',
             },
           ]}
-        />
+        >
+          <html lang="ja"/>
+        </Helmet>
         <div className="main-wrapper">
           {header}
           <main className="main">
