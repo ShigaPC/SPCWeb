@@ -97,10 +97,10 @@ class Template extends React.Component {
             <Link to="/admin/">SIGN IN</Link>
           </div>
           <div className="center footer-sns">
-            <a target="_blank" href="https://twitter.com/densan_public" title="Twitter@densan_public>
+            <a target="_blank" href="https://twitter.com/densan_public" title="Twitter@densan_public">
               <TwitterIcon width="3em" height="3em"/>
             </a>
-            <a target="_blank" href="https://github.com/ShigaPC/" title="GitHub@ShigaPC>
+            <a target="_blank" href="https://github.com/ShigaPC/" title="GitHub@ShigaPC">
               <GitHubIcon width="3em" height="3em"/>
             </a>
           </div>
