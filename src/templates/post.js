@@ -32,10 +32,10 @@ class BlogPostTemplate extends React.Component {
           <aside className="aside">
             <p>この記事を書いた人：{post.frontmatter.author}</p>
             <div>
-              <p>シェアする</p>
+              <p>SNSでシェア</p>
               <div className="share-button-box">
-                <a target="_blank" href={`http://twitter.com/share?url=${shareUrl}`}><TwitterIcon className="twitter-icon"/></a>
-                <a target="_blank" href={`https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`}><FacebookIcon className="facebook-icon"/></a>
+                <a target="_blank" href={`http://twitter.com/share?url=${shareUrl}`} title="Twitterでシェア"><TwitterIcon className="twitter-icon"/></a>
+                <a target="_blank" href={`https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`} title="Facebookでシェア"><FacebookIcon className="facebook-icon"/></a>
               </div>
             </div>
             <ul className="tags-box">
