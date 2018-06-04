@@ -45,9 +45,11 @@ author: 平松
 
 　次に、ビルド時に`ampify.js`を走らせるための設定をします。`package.json`に
 
-　`"scripts": {
+```
+"scripts": {
     "build": "gatsby build && cp -r public amp && rm amp/*.js amp/*.map amp/*.css amp/*.xml amp/*.json amp/*.txt amp/*.webmanifest && mv amp public/amp && node ampify.js",
-  },`
+  },
+```
 
 　を追記します。これも自分のサイトに合わせて改良してください。以上でAMP化は完了です。デプロイする前に、Netlifyのビルドの設定を`npm run build`に書き換えておきましょう。
 
@@ -67,6 +69,7 @@ author: 平松
 
 　`gatsby-plugin-offline`は`/sw.js`を生成しているので、同じ場所にServiceWorkerをインストールさせます。先ほどのampify.jsに
 
+```
 $('head').prepend(`<script async custom-element="amp-install-serviceworker"
   src="https://cdn.ampproject.org/v0/amp-install-serviceworker-0.1.js"></script>`);
 
@@ -74,6 +77,7 @@ $('body').prepend(`<amp-install-serviceworker
       src="/sw.js" data-iframe-src="https://www.shigapc.com/sw.html"
       layout="nodisplay">
 </amp-install-serviceworker>`);
+```
 
 　を付け足しておきましょう。これでAMPページにもServiceWorkerを導入できました。
 
