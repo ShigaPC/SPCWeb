@@ -65,7 +65,7 @@ author: 平松
 
 ## ampify.jsで生成したAMPページにPWAを実装する
 
-　Gatsby製のサイトなら、AMPのページ内でPWAを動かす形態で十分でしょう。AMPページからServiceWorkerをインストールするには[amp-install-serviceworker](amp-install-serviceworker)を別途使用する必要があります。
+　Gatsby製のサイトなら、AMPのページ内でPWAを動かす形態で十分でしょう。AMPページからServiceWorkerをインストールするには[amp-install-serviceworker](https://www.ampproject.org/docs/reference/components/amp-install-serviceworker)を別途使用する必要があります。
 
 　`gatsby-plugin-offline`は`/sw.js`を生成しているので、同じ場所にServiceWorkerをインストールさせます。先ほどのampify.jsに
 
