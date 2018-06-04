@@ -15,9 +15,9 @@ author: 平松
 
 　AndroidかiPhone(iOS 11.3以降)でこのサイトにアクセスしていただくと、PWAの機能を体験できます。
 
-　また、[こちら](www.shigapc.com/amp/)が自動生成されたトップページのAMP版となります。
+　また、[こちら](https://www.shigapc.com/amp/)が自動生成されたトップページのAMP版となります。
 
-　パフォーマンスの最適化も行いました。LightHouseによるこのサイトのスコアが以下となります。
+　パフォーマンスの最適化も行いました。Lighthouseによるこのサイトのスコアが以下となります。
 
 ![Lighthouse result](/assets/lighthouse.png)
 
@@ -59,7 +59,7 @@ author: 平松
 
 　ServiceWorkerをインストールしたい場合は、`gatsby-plugin-offline`を導入するだけです。ただし、ServiceWorkerをインストールするとNetlifyCMSが404エラーになるので、シークレットモードでアクセスする必要があります。
 
-　ウェブアプリマニフェストは`gatsby-plugin-manifest`を入れると自動的に生成されます。ただし、ServiceWorkerと併用する場合、`gatsby-config.js`内で宣言するときに`gatsby-plugin-offline`が`gatsby-plugin-manifest`より下にくるようにしましょう。
+　ウェブアプリマニフェストは`gatsby-plugin-manifest`を入れると自動的に生成されます。`gatsby-config.js`でお好みに設定してください。ただし、ServiceWorkerと併用する場合、`gatsby-config.js`内で宣言するときに`gatsby-plugin-offline`が`gatsby-plugin-manifest`より下にくるようにしましょう。
 
 ## ampify.jsで生成したAMPページにPWAを実装する
 
