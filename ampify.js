@@ -67,7 +67,7 @@ recursive(inputDir, [], (err, files) => {
         src="https://cdn.ampproject.org/v0/amp-install-serviceworker-0.1.js"></script>`);
   
       $('body').prepend(`<amp-install-serviceworker
-        src="https://www.shigapc.com/sw.js"
+        src="/sw.js" data-iframe-src="https://www.shigapc.com/sw.html"
         layout="nodisplay"></amp-install-serviceworker>`);
     }), 'utf8');
   }
