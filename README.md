@@ -1,6 +1,6 @@
 ## 使い方
 
-1. `www.shigapc.com/admin/`からログイン
+1. `www.shigapc.com/admin/`からログイン（シークレットモード推奨）
 1. `New Posts`をクリック
 1. `Publish`で投稿（反映に数分掛かります）
 
