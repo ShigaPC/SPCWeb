@@ -1,4 +1,4 @@
-#使い方
+## 使い方
 
 1. `www.shigapc.com/admin/`からログイン
 1. `New Posts`をクリック
