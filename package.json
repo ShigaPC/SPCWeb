@@ -28,7 +28,7 @@
     "gatsby-transformer-remark": "^1.7.41",
     "gatsby-transformer-sharp": "^1.6.24",
     "netlify-cms": "^1.8.4",
-    "node-sass": "^4.9.0",
+    "node-sass": "^7.0.0",
     "prismjs": "^1.14.0",
     "react-helmet": "^5.2.0",
     "react-icons": "^2.2.7"
